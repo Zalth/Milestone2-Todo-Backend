@@ -1,9 +1,10 @@
-import TodosDAO from '../dao/todosDAO.js'
+import TodosDAO from '../dao/todosDAO'
+import express from 'express'
 
 class TodosController {
 
     //CREATE (form) - PostTodo
-    static async PostTodo(req, res) {
+    static async PostTodo(req: express.Request, res: express.Response) {
         try{
             const name = req.body.name
             const priority = req.body.priority
@@ -21,11 +22,11 @@ class TodosController {
     }
 
     //READ - GetTodos
-    static async GetTodos(req, res) {
+    static async GetTodos(req: express.Request, res: express.Response) {
         try{
             // const todoId = req.params.id
 
-            const response = await TodosDAO.getTodos()
+            const response = await TodosDAO.getTodos('_id')
             res.json(response);
 
         } catch(err) {
@@ -36,7 +37,7 @@ class TodosController {
 
     //READ- GetTodosId
 
-    static async GetTodosId(req, res) {
+    static async GetTodosId(req: express.Request, res: express.Response) {
         try {
             const todoId = req.params.id
 
@@ -51,7 +52,7 @@ class TodosController {
     }
 
     //UPDATE (form) - UpdateTodo
-    static async UpdateTodo(req, res) {
+    static async UpdateTodo(req: express.Request, res: express.Response) {
         try{
             const todoId = req.params.id 
             const name = req.body.name
@@ -69,7 +70,7 @@ class TodosController {
     }
 
     //DELETE - DeleteTodo
-    static async DeleteTodo(req, res) {
+    static async DeleteTodo(req: express.Request, res: express.Response) {
         try{
             const todoId = req.params.id
             const response  = await TodosDAO.deleteTodo(todoId)

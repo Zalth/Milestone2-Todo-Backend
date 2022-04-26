@@ -1,7 +1,7 @@
 // Importing Dependecies and Controller that we need
 
 import express from 'express'
-import TodosController from './todos_controller.js'
+import TodosController from './todos_controller'
 
 
 // Express Router
